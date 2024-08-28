@@ -1,0 +1,84 @@
+Select release version.
+<style>
+table.desc, th.desc, td.desc {
+    border-collapse: collapse;;
+    border-bottom: 1px solid #dddddd;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font: 12px Andale Mono, sans-serif;
+    color: #4E4E4E;
+    text-align: left;
+}
+
+tr.gradient {
+    background: #fbfff1;
+    background: -moz-linear-gradient(45deg, #fbfff1 0%, #eee7c2 67%,
+     #eee7c2 67%, #89ffef 100%);
+    background: -webkit-linear-gradient(45deg, #fbfff1 0%,#eee7c2
+     67%,#eee7c2 67%,#89ffef 100%);
+    background: linear-gradient(45deg,  #fbfff1 0%,#eee7c2
+     67%,#eee7c2 67%,#89ffef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(
+     startColorstr='#fbfff1', endColorstr='#89ffef',GradientType=1 );
+    background-attachment:fixed;
+    border: none;
+}
+
+td.notation_padding {
+    padding: 10px;
+}
+
+tr.double_bottom_border {
+    border-bottom: double #dddddd;
+}
+</style>
+
+For detailed description of the release process see
+<a target="_blank" href="https://eta.epk.ericsson.se/wiki/index.php5/NPM_release_process">
+NPM release process</a> Wiki page.
+<br><br>
+
+<table class="desc" width="700" align="center">
+    <tr class="desc gradient double_bottom_border" >
+        <th class="desc"> <b>Version</b> </th>
+        <th class="desc"> <b>Description</b> </th>
+        <th class="desc"> <b>Notation</b> </th>
+    </tr>
+
+    <tr class="desc">
+        <td class="desc">Major</td>
+        <td class="desc">Incompatible API changes.
+            <br> Based on the last commit on the <em>master</em> branch.
+        </td>
+        <td class="desc notation_padding">
+            (X<b>+1</b>).Y.Z
+        </td>
+    </tr>
+
+    <tr class="desc">
+        <td class="desc"> Minor </td>
+        <td class="desc"> Add functionality in a backwards-compatible manner.
+            <br> Based on the last commit on the <em>master</em> branch.
+        </td>
+        <td class="desc notation_padding">
+            X.<b>(Y+1)</b>.Z
+        </td>
+    </tr>
+
+    <tr class="desc">
+        <td class="desc"> Patch
+            <br><small>(separate job)</small></td>
+        <td class="desc"> Make backwards-compatible bug fixes.
+            <br> Based on the last commit on the <em>patch</em> branch.
+        </td>
+        <td class="desc notation_padding">
+            X.Y.<b>(Z+1)</b>
+        </td>
+    </tr>
+</table>
+<br>
+
+More info about the version can be found in
+<a href="http://semver.org/">Semantic Versioning</a> page.<br/>

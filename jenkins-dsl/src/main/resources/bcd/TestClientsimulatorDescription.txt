@@ -1,0 +1,4 @@
+This build provides the BCD Client Simulator.<br />
+A zip-file containing the complete simulator, incl. example configuration is found under Last Successful Artifacts.
+
+<!-- Build Root POM: bcd.client.sim/pom.xml -->

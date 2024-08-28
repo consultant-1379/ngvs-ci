@@ -1,0 +1,1 @@
+additionalJobsToWaitWithBuild = 'rmca_washingmachine_rpm_fullinstall'

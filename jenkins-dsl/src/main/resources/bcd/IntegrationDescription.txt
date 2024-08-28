@@ -1,0 +1,29 @@
+<h3>Short BCD Instruction:</h3>
+<h4>Products</h4>
+<p>1/19089-1/CXP 902 2590/1 - BCD<br />
+  1/19089-2/CXP 902 2590/1 - BCD SUF Playlist</p>
+<h4>Software</h4>
+<p>Download BCD rpm(s) from this page under the <i>Last Successful Artifacts</i>section .</p>
+<p>Directly from target:<br />
+# curl -k -u &#60;Your Jenkins user&#62; -O &#60;Link copied from Last Successful Artifacts section&#62;</p>
+
+<h4>Installation</h4>
+<p>Follow the <a href="http://luvaweb.epk.ericsson.se/cgi-bin/ListHistory?view=csdev_db_fds&file=/vobs/vau/DOCDIS/BCD/Installation/1_1531-CNH1608663_1_Uen.depend">BCD Software Installation</a></p>
+
+<h4>Uninstall</h4>
+<p># yum erase bcd apache-commons-daemon-jsvc</p>
+
+<h4>Cleanup</h4>
+<p>To completly remove bcd - all dynamic files and user.<br/>
+# /usr/bin/bcdrm</p>
+
+<h4>GUI</h>
+<p>The GUI is accessed with https://&#60;host&#62;:9001/gui/</p>
+<p>User: admin<br />
+Password: admin</p>
+
+<h4>Documentation</h4>
+<p><a href="http://luvaweb.epk.ericsson.se/DocBuild/result/csdev_db_fds/csdev_latest.html#Section_BCD_CPI">Nightly CPI and Support document build</a></p>
+
+<h4>build-*-bin.zip</h4>
+<p>This package is a pure java package that can be used for <u>internal testing</u> on other platforms than what is supported by the BCD product.</p>

@@ -1,0 +1,23 @@
+apply plugin: 'groovy'
+
+sourceSets {
+    jobs { groovy { srcDirs 'jobs'
+        } }
+}
+
+repositories {
+    maven { url 'file:///workarea/artifacts/maven-3pp-mirrors/repo.jenkins-ci.org/releases' }
+    maven { url 'https://arm.epk.ericsson.se/artifactory/proj-eta-remote' }
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy:2.1.3'
+    compile 'org.jenkins-ci.plugins:job-dsl-core:1.45'
+    compile 'org.jvnet.hudson.main:hudson-core:2.2.1'
+    compile 'javax.servlet:servlet-api:2.4'
+    testCompile('org.spockframework:spock-core:0.7-groovy-2.0') { exclude module: 'groovy-all' }
+}
+
+task wrapper(type: Wrapper) { gradleVersion = '2.4' }
+
+// vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab

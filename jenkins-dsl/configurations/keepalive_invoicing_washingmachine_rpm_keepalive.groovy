@@ -1,0 +1,1 @@
+additionalJobsToWaitWithBuild = 'invoicing_washingmachine_rpm_fullinstall'

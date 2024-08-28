@@ -1,0 +1,27 @@
+node("315"){
+  stage ('SCM') { 
+    // git poll:true, branch:'blue_o_testing', url: 'ssh://gerrit.epk.ericsson.se:29418/commonosgi/rm.common'
+    // sh 'repo init -u ssh://gerrit.epk.ericsson.se:29418/commonosgi/rm.common.git'
+    // sh 'repo sync'
+    // sh 'repo download $GERRIT_PROJECT $GERRIT_CHANGE_NUMBER/$GERRIT_PATCHSET_NUMBER'
+    git url: 'ssh://gerrit.epk.ericsson.se:29418/commonosgi/rm.common'
+    sh "env"
+    def changeBranch = "change-${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}"
+    sh "git fetch origin ${GERRIT_REFSPEC}:${changeBranch}"
+    sh "git checkout ${changeBranch}"
+    sh "echo "checked out branch is  ${changeBranch}" "
+    }
+  stage ('Build') { 
+ 
+    withMaven(
+        jdk: 'Latest JDK 1.7',
+        maven: 'Latest Maven',
+        mavenSettingsFilePath: '/proj/eta-automation/maven/kascmadm-settings_arm-common-osgi.xml',
+        mavenLocalRepo: '.repository') {
+ 
+      // Run the maven build
+      //sh "mvn clean test -DskipTests -Djarsigner.skip=true"
+      sh "mvn clean test -fae"
+    }
+  }
+}

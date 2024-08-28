@@ -1,0 +1,47 @@
+#!/opt/local/dev_tools/groovy/latest/bin/groovy
+
+import hudson.model.*
+import hudson.EnvVars
+	
+pipeline {
+	agent any
+	options { skipStagesAfterUnstable() }
+	environment { 
+		JAVA_HOME = '/opt/local/dev_tools/java/latest-1.7/'
+		MVN_HOME = '/opt/local/dev_tools/maven/latest/'
+		MAVEN_OPTS = '-server -Xss1M -Xms128M -Xmx1540M -XX:MaxPermSize=128M'
+		INSTALL_HOST = 'vmc0176'
+		// PATH = '"${JAVA_HOME}"/bin:"${MVN_HOME}"/bin:"${PATH}"'
+		}
+	stages {
+		stage ('NGVS fnt_jive') {
+		    steps {
+			    script {
+			    try {
+			    sh 'mkdir -p ${WORKSPACE}/fnt.clone'
+				dir ('fnt.clone'){
+				git url: 'ssh://gerrit.epk.ericsson.se:29418/cake/cake.fnt', branch: 'develop'
+				sh 'cp /home/erinyad/Jenkins/ngvs_fnt_pre.sh .;chmod 755 ngvs_fnt_pre.sh;/bin/sh ngvs_fnt_pre.sh'
+				withEnv(["PATH=${JAVA_HOME}/bin:${MVN_HOME}/bin:${PATH}"]) {
+				sh 'mvn -f jive-ngvs/pom.xml -s /proj/eta-automation/maven/kascmadm-settings_arm-voucher.xml -Dinstall_host=$INSTALL_HOST clean verify -P tr_suite -U --settings=/proj/eta-automation/maven/kascmadm-settings_arm-voucher.xml' } }
+				} catch(Exception e) {
+				      println("Build failed.... Check logs.");
+				  }finally {
+				       dir ('fnt.clone'){
+				       junit 'jive-ngvs/target/failsafe-reports/*.xml'
+				       sh 'cp /home/erinyad/Jenkins/ngvs_fnt_post.sh .;chmod 755 ngvs_fnt_post.sh;/bin/sh ngvs_fnt_post.sh'
+                       mail bcc: '', body: '''<h3>Tests run: ${TEST_COUNTS}, Passed: ${TEST_COUNTS,var="pass"}, Failed: ${TEST_COUNTS,var="fail"}, Skipped: ${TEST_COUNTS,var="skip"}</h3>
+                       ${JELLY_SCRIPT,template="html"}''', cc: '', from: 'eta@noreply.epk.ericsson.se', replyTo: '', subject: '$DEFAULT_SUBJECT', to: 'rinku.yadav@ericsson.com' }
+              } 				
+			}
+       	  }
+		}
+	  }
+	  post {
+	      always {
+		      echo 'Cleaning workspace.'       
+		      sh 'pwd'
+			  deleteDir()
+		  }
+	  }
+}

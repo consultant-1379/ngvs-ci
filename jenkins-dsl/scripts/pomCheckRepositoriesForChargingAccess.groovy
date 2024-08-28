@@ -1,0 +1,14 @@
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.oam.log
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.oam
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.common
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.oam.pm
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.oam.fm
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.trafficcontroller
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.runtime
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.configmanager
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.plugins
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.tools
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.services
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.integration
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.integrationtest
+ssh://gerrit.epk.ericsson.se:29418/charging/com.ericsson.bss.rm.charging.access.productiondependencies
